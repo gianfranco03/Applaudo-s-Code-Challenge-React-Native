@@ -13,6 +13,8 @@ module.exports = {
 					navigation: './src/navigation',
 					services: './src/services',
 					utils: './src/utils',
+					store: './src/store',
+					sagas: './src/sagas',
 					// actions: './src/state/actions',
 					constants: './src/constants',
 					// contexts: './src/state/contexts',
