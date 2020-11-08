@@ -43,6 +43,7 @@ android/app/release/output.json
 node_modules/
 npm-debug.log
 yarn-error.log
+yarn.lock
 *.log
 .nvm
 /bots/node_modules/
