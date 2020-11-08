@@ -1,3 +1,10 @@
 export const INITIAL_STATE = {
-	data: []
+	data: {
+		anime: [],
+		manga: []
+	},
+	loading: false,
+	searchData: {
+		data: []
+	}
 };
