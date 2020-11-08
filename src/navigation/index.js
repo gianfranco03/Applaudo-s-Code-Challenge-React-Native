@@ -6,6 +6,7 @@ import HomeScreen from 'screens/home';
 import SplashScreen from 'screens/splash';
 import SerieDetailsScreen from 'screens/serieDetails';
 import FavoritesScreen from 'screens/favorites';
+import SearchScreen from 'screens/search';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +35,7 @@ const TabsMain = (props) => {
 				<Stack.Screen name="SplashScreen" component={SplashScreen} options={screenVertical} />
 				<Stack.Screen name="SerieDetailsScreen" component={SerieDetailsScreen} options={screenVertical} />
 				<Stack.Screen name="FavoritesScreen" component={FavoritesScreen} options={screenVertical} />
+				<Stack.Screen name="SearchScreen" component={SearchScreen} options={screenHorizontal} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

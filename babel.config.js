@@ -15,7 +15,7 @@ module.exports = {
 					utils: './src/utils',
 					store: './src/store',
 					sagas: './src/sagas',
-					// actions: './src/state/actions',
+					actions: './src/actions',
 					constants: './src/constants',
 					// contexts: './src/state/contexts',
 					// reducers: './src/state/reducers',
