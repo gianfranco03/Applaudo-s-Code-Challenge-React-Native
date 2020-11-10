@@ -7,16 +7,9 @@ import colors from 'constants/colors';
 export default StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center'
+		backgroundColor: colors.backgroundPrimary
 	},
-	title: {
-		fontFamily: typography.fontFamilyBold,
-		fontSize: wp(5)
-	},
-	navText: {
-		fontFamily: typography.fontFamilyRegular,
-		fontSize: wp(4.5),
-		marginTop: hp(3)
+	scroll: {
+		paddingHorizontal: wp(4)
 	}
 });
