@@ -7,7 +7,8 @@ import colors from 'constants/colors';
 export default StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: colors.backgroundPrimary
+		backgroundColor: colors.backgroundPrimary,
+		paddingBottom: hp(2)
 	},
 	scroll: {
 		paddingHorizontal: wp(4)
