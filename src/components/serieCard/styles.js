@@ -17,7 +17,7 @@ export default StyleSheet.create({
 	},
 	title: {
 		fontFamily: typography.fontFamilyRegular,
-		color: 'white',
+		color: colors.white,
 		position: 'absolute',
 		alignSelf: 'center',
 		textAlign: 'center',

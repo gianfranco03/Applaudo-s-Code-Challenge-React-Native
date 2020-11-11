@@ -11,13 +11,13 @@ export default StyleSheet.create({
 	},
 	textTitle: {
 		fontSize: wp(3.3),
-		color: colors.white,
+		color: colors.textColor,
 		fontFamily: typography.fontFamilySemiBold,
 		marginBottom: hp(1)
 	},
 	textSubTitle: {
 		fontSize: wp(3.1),
-		color: colors.white,
+		color: colors.textColor,
 		fontFamily: typography.fontFamilyRegular,
 		marginBottom: hp(1.5)
 	},
@@ -30,7 +30,7 @@ export default StyleSheet.create({
 	},
 	synopsisText: {
 		fontSize: wp(3.1),
-		color: colors.white,
+		color: colors.textColor,
 		fontFamily: typography.fontFamilyRegular,
 		marginBottom: hp(1.5),
 		lineHeight: hp(2.8)
@@ -43,12 +43,12 @@ export default StyleSheet.create({
 	},
 	youtubeIcon: {
 		fontSize: wp(10),
-		color: colors.white,
+		color: colors.textColor,
 		marginLeft: wp(2)
 	},
 	youtubeText: {
 		fontSize: wp(3.3),
-		color: colors.white,
+		color: colors.textColor,
 		fontFamily: typography.fontFamilySemiBold,
 		marginTop: wp(0.1)
 	}

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ActivityIndicator, FlatList } from 'react-native';
+import { View, Text, ActivityIndicator, FlatList, Image } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { Searchbar, RadioButton } from 'react-native-paper';
+import { Icon } from 'native-base';
 
 import ListItem from 'components/serieCard';
 
@@ -21,6 +22,7 @@ const SearchScreen = (props) => {
 	const { navigation } = props;
 	// actions & reducers
 	const dispatch = useDispatch();
+	const { connected } = useSelector((state) => state.appFlow);
 	const seriesState = useSelector((state) => state.series);
 	const { loading: loadingState, searchData } = seriesState;
 	// states
@@ -53,7 +55,7 @@ const SearchScreen = (props) => {
 	);
 
 	const _searchSeries = (slug) => {
-		if (slug.length > 0) {
+		if (slug.trim().length > 0) {
 			searchSeries(slug, searchQuery);
 		}
 	};
@@ -65,23 +67,46 @@ const SearchScreen = (props) => {
 		}
 	};
 
+	const renderEmpyComponent = () => {
+		if (loading) return null;
+
+		if (connected) {
+			return <Text style={styles.noItems}>There's no information to show</Text>;
+		}
+
+		return (
+			<View style={styles.noInternetContainer}>
+				<Image source={require('assets/icons/no-wifi.png')} style={styles.wifiImage} />
+				<Text style={styles.noInternetText}>No Internet connection</Text>
+			</View>
+		);
+	};
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.header}>
+				<Icon
+					style={styles.backIcon}
+					type="FontAwesome"
+					name="angle-left"
+					onPress={() => navigation.goBack()}
+				/>
 				<Searchbar
+					style={styles.searchBar}
+					inputStyle={styles.inputStyle}
 					placeholder="Search"
 					onChangeText={onChangeSearch}
 					value={searchQuery}
 					autoFocus
-					onSubmitEditing={() => _searchSeries(searchQuery)}
+					onSubmitEditing={() => _searchSeries(checked)}
 				/>
 			</View>
 			<View style={styles.options}>
 				<View style={styles.optionContent}>
 					<RadioButton
 						value={TYPES.ANIME}
-						color={colors.white}
-						uncheckedColor={colors.white}
+						color={colors.textColor}
+						uncheckedColor={colors.textColor}
 						status={checked === TYPES.ANIME ? 'checked' : 'unchecked'}
 						onPress={() => handleTypes(TYPES.ANIME)}
 					/>
@@ -92,8 +117,8 @@ const SearchScreen = (props) => {
 				<View style={styles.optionContent}>
 					<RadioButton
 						value={TYPES.MANGA}
-						color={colors.white}
-						uncheckedColor={colors.white}
+						color={colors.textColor}
+						uncheckedColor={colors.textColor}
 						status={checked === TYPES.MANGA ? 'checked' : 'unchecked'}
 						onPress={() => handleTypes(TYPES.MANGA)}
 					/>
@@ -104,13 +129,14 @@ const SearchScreen = (props) => {
 			</View>
 			{loading ? (
 				<View style={styles.loading}>
-					<ActivityIndicator size="large" color={colors.white} />
+					<ActivityIndicator size="large" color={colors.textColor} />
 				</View>
 			) : null}
 			<FlatList
 				numColumns={3}
 				contentContainerStyle={styles.contentContainer}
 				data={data}
+				ListEmptyComponent={() => renderEmpyComponent()}
 				renderItem={({ item }) => (
 					<View style={styles.itemMargin}>
 						<ListItem

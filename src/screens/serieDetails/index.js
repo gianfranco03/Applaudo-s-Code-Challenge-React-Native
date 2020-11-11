@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, ScrollView, Text } from 'react-native';
+import { View, ScrollView } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import Header from './header';
@@ -9,21 +10,45 @@ import SerieDetailSkeleton from './skeleton';
 
 import showToast from 'utils/toast';
 
+import SeriesActions from 'store/series/actions';
+
 import styles from './styles';
 
 const SerieDetailsScreen = (props) => {
 	const { navigation, route: { params: { data } } } = props;
+	const dispatch = useDispatch();
+
+	const favoritesList = useSelector((state) => state.series.favorites);
 
 	const [ genres, setGenres ] = useState([]);
 	const [ episodesList, setEpisodes ] = useState([]);
-	const [ loading, setLoading ] = useState(false);
+	const [ loading, setLoading ] = useState(true);
+	const [ favorite, setFavorite ] = useState(false);
 	let dataType = null;
 
 	useEffect(() => {
 		dataType = getDataType();
 		getGenres();
 		getEpisodes();
+
+		const isFavorite = favoritesList.findIndex((item) => item.id === data.id);
+		if (isFavorite >= 0) {
+			setFavorite(true);
+		}
 	}, []);
+
+	useEffect(
+		() => {
+			const isFavorite = favoritesList.findIndex((item) => item.id === data.id);
+			if (isFavorite >= 0) {
+				setFavorite(true);
+			}
+			else {
+				setFavorite(false);
+			}
+		},
+		[ favoritesList ]
+	);
 
 	const getDataType = () => {
 		switch (data.type) {
@@ -71,12 +96,16 @@ const SerieDetailsScreen = (props) => {
 		}
 	};
 
+	const onPressFavorite = () => {
+		dispatch(SeriesActions.handleFavorites(data.id, { ...data, genres }));
+	};
+
 	return (
 		<View style={styles.container}>
 			<ScrollView contentContainerStyle={styles.scroll}>
 				{!loading ? (
 					<View>
-						<Header data={data} />
+						<Header data={{ ...data, favorite }} onPressFavorite={onPressFavorite} />
 						<Body data={data} genres={genres} />
 						<Episodes data={data} episodes={episodesList} />
 					</View>

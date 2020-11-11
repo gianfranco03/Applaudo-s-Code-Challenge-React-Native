@@ -7,7 +7,7 @@ import colors from 'constants/colors';
 export default StyleSheet.create({
 	container: {
 		flexDirection: 'row',
-		paddingTop: hp(3.5)
+		paddingTop: hp(2.5)
 	},
 	image: {
 		width: wp(34),
@@ -20,14 +20,36 @@ export default StyleSheet.create({
 	},
 	textTitle: {
 		fontSize: wp(3.4),
-		color: colors.white,
+		color: colors.textColor,
 		fontFamily: typography.fontFamilySemiBold,
 		marginBottom: hp(0.5)
 	},
 	textSubTitle: {
 		fontSize: wp(3.2),
-		color: colors.white,
+		color: colors.textColor,
 		fontFamily: typography.fontFamilyRegular,
 		marginBottom: hp(1)
+	},
+	headerIcons: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		marginTop: hp(1.5)
+	},
+	rightIcons: {
+		flexDirection: 'row'
+	},
+	backIcon: {
+		color: colors.textColor,
+		fontSize: wp(10)
+	},
+	saveIcon: {
+		color: colors.textColor,
+		fontSize: wp(7),
+		marginRight: wp(4)
+	},
+	shareIcon: {
+		color: colors.textColor,
+		fontSize: wp(7)
 	}
 });

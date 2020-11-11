@@ -10,13 +10,13 @@ export default StyleSheet.create({
 	},
 	textTitle: {
 		fontSize: wp(3.4),
-		color: colors.white,
+		color: colors.textColor,
 		fontFamily: typography.fontFamilySemiBold,
 		marginBottom: hp(2)
 	},
 	textSubTitle: {
 		fontSize: wp(3.2),
-		color: colors.white,
+		color: colors.textColor,
 		fontFamily: typography.fontFamilyRegular,
 		marginBottom: hp(1.5)
 	},
@@ -30,11 +30,12 @@ export default StyleSheet.create({
 		height: hp(12),
 		flexDirection: 'row',
 		backgroundColor: 'gray',
-		borderRadius: wp(1)
+		borderRadius: wp(1),
+		marginBottom: hp(2)
 	},
 	itemNumber: {
 		fontSize: wp(3.2),
-		color: colors.white,
+		color: colors.textColor,
 		fontFamily: typography.fontFamilyRegular,
 		position: 'absolute',
 		left: 0
@@ -45,7 +46,7 @@ export default StyleSheet.create({
 	itemTitleText: {
 		marginTop: hp(1),
 		fontSize: wp(3),
-		color: colors.white,
+		color: colors.textColor,
 		fontFamily: typography.fontFamilyBold,
 		marginBottom: hp(1),
 		textAlign: 'left',
@@ -53,7 +54,7 @@ export default StyleSheet.create({
 	},
 	itemSynopsis: {
 		fontSize: wp(2.8),
-		color: colors.white,
+		color: colors.textColor,
 		fontFamily: typography.fontFamilyRegular,
 		textAlign: 'justify',
 		width: wp(52),
@@ -66,7 +67,7 @@ export default StyleSheet.create({
 		borderRadius: wp(1)
 	},
 	banIcon: {
-		color: colors.white,
+		color: colors.textColor,
 		fontSize: wp(10)
 	},
 	iconContainer: {
@@ -75,7 +76,7 @@ export default StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderWidth: 0.5,
-		borderColor: colors.white,
+		borderColor: colors.textColor,
 		borderRadius: wp(1)
 	}
 });

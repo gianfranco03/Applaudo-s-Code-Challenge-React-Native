@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, Image, Text, FlatList } from 'react-native';
 import { Icon } from 'native-base';
 
@@ -7,7 +7,7 @@ import styles from './styles';
 const Episodes = (props) => {
 	const { data, episodes } = props;
 
-	const renderItem = ({ item, index }) => {
+	const renderItem = (item, index) => {
 		const attributes = item.attributes;
 
 		if (!attributes) {
@@ -17,7 +17,7 @@ const Episodes = (props) => {
 		const synopsis = attributes.synopsis;
 
 		return (
-			<View style={styles.itemContainer}>
+			<View style={styles.itemContainer} key={index}>
 				{attributes.thumbnail ? (
 					<Image
 						source={{
@@ -53,12 +53,13 @@ const Episodes = (props) => {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.textTitle}>{data.type == 'anime' ? 'Episodies' : 'Chapters'}</Text>
-			<FlatList
-				data={episodes}
-				renderItem={renderItem}
-				contentContainerStyle={styles.containerStyle}
-				ItemSeparatorComponent={() => <View style={styles.separator} />}
-			/>
+			{episodes.length > 0 ? (
+				episodes.map((item, index) => renderItem(item, index))
+			) : (
+				<Text style={styles.textSubTitle}>
+					There's no {data.type == 'anime' ? 'episodies' : 'chapters'} to show.
+				</Text>
+			)}
 		</View>
 	);
 };

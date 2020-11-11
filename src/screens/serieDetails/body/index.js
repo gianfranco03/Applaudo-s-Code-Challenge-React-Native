@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Linking, Text } from 'react-native';
+import { View, Linking, Text, TouchableOpacity } from 'react-native';
 import { Icon } from 'native-base';
 
 import showToast from 'utils/toast';
@@ -64,15 +64,10 @@ const Body = (props) => {
 			<Text style={styles.textTitle}>Synopsis</Text>
 			<Text style={styles.synopsisText}>{attributes.synopsis ? attributes.synopsis : EMPTY_RESPONSE}</Text>
 			{attributes.youtubeVideoId ? (
-				<View style={styles.youtubeContainer}>
+				<TouchableOpacity style={styles.youtubeContainer} onPress={() => openYoutube()}>
 					<Text style={styles.youtubeText}>Youtube</Text>
-					<Icon
-						style={styles.youtubeIcon}
-						type="FontAwesome"
-						name="youtube-play"
-						onPress={() => openYoutube()}
-					/>
-				</View>
+					<Icon style={styles.youtubeIcon} type="FontAwesome" name="youtube-play" />
+				</TouchableOpacity>
 			) : null}
 		</View>
 	);

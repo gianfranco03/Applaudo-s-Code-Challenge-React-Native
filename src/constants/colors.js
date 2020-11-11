@@ -2,5 +2,6 @@ export default {
 	primary: 'red',
 	white: '#ffffff',
 	black: '#000000',
-	backgroundPrimary: '#121212'
+	backgroundPrimary: '#ffffff', // dark => #121212 || light => #ffffff
+	textColor: '#000000' // dark mode => #ffffff || light => #000000
 };

@@ -8,21 +8,25 @@ import showToast from 'utils/toast';
 
 export const getSeriesByType = (type = 'anime') => {
 	store.dispatch(SeriesActions.setLoading(true));
+	console.log('[ SeriesActions ]', type);
 
 	axios
 		.get(`${BASE_API}/${type}`)
 		.then((response) => {
 			store.dispatch(SeriesActions.setTypes(`${type}`, response.data));
 			store.dispatch(SeriesActions.setLoading(false));
+			// console.log('[  getByType - success ]', response.data);
 		})
 		.catch((error) => {
 			showToast({ text: error.toString(), type: 'error' });
 			store.dispatch(SeriesActions.setLoading(false));
+			// console.log('[  getByType  - error ]', error);
 		});
 };
 
 export const searchSeries = (type = 'anime', slug) => {
 	store.dispatch(SeriesActions.setLoading(true));
+	// console.log('[ search ]', type, slug);
 
 	axios
 		.get(`${BASE_API}/${type}?filter[text]=${slug}`)
