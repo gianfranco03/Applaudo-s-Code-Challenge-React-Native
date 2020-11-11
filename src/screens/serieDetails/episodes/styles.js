@@ -29,7 +29,7 @@ export default StyleSheet.create({
 	itemContainer: {
 		height: hp(12),
 		flexDirection: 'row',
-		backgroundColor: 'gray',
+		backgroundColor: colors.itemBackground,
 		borderRadius: wp(1),
 		marginBottom: hp(2)
 	},

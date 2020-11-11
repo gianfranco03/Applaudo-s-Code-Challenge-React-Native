@@ -31,16 +31,16 @@ const SerieDetailsScreen = (props) => {
 		getGenres();
 		getEpisodes();
 
-		const isFavorite = favoritesList.findIndex((item) => item.id === data.id);
-		if (isFavorite >= 0) {
+		const isFavorite = checkFavorite();
+		if (isFavorite) {
 			setFavorite(true);
 		}
 	}, []);
 
 	useEffect(
 		() => {
-			const isFavorite = favoritesList.findIndex((item) => item.id === data.id);
-			if (isFavorite >= 0) {
+			const isFavorite = checkFavorite();
+			if (isFavorite) {
 				setFavorite(true);
 			}
 			else {
@@ -49,6 +49,12 @@ const SerieDetailsScreen = (props) => {
 		},
 		[ favoritesList ]
 	);
+
+	const checkFavorite = () => {
+		const isFavorite = favoritesList.findIndex((item) => item.id === data.id && item.type === data.type);
+
+		return isFavorite >= 0 ? true : false;
+	};
 
 	const getDataType = () => {
 		switch (data.type) {

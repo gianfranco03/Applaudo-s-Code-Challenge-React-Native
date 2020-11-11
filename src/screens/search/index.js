@@ -24,7 +24,7 @@ const SearchScreen = (props) => {
 	const dispatch = useDispatch();
 	const { connected } = useSelector((state) => state.appFlow);
 	const seriesState = useSelector((state) => state.series);
-	const { loading: loadingState, searchData } = seriesState;
+	const { loadingSearch: loadingState, searchData } = seriesState;
 	// states
 	const [ searchQuery, onChangeSearch ] = useState('');
 	const [ checked, setChecked ] = useState(TYPES.ANIME);

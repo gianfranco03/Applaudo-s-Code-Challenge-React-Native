@@ -31,7 +31,7 @@ export default StyleSheet.create({
 	},
 	itemContainer: {
 		flexDirection: 'row',
-		backgroundColor: 'gray',
+		backgroundColor: colors.itemBackground,
 		borderRadius: wp(1),
 		overflow: 'hidden'
 	},
@@ -79,5 +79,12 @@ export default StyleSheet.create({
 		color: colors.textColor,
 		fontSize: wp(4),
 		textAlign: 'center'
+	},
+	removeIcon: {
+		color: colors.textColor,
+		fontSize: wp(8),
+		position: 'absolute',
+		right: wp(2),
+		top: wp(1.5)
 	}
 });
