@@ -2,6 +2,7 @@ import { INITIAL_STATE } from './initialState';
 import { createReducer } from 'reduxsauce';
 import { SeriesTypes } from './actions';
 
+// set home info
 export const setData = (state, { data }) => {
 	return {
 		...state,
@@ -9,16 +10,19 @@ export const setData = (state, { data }) => {
 	};
 };
 
+// set loading seires
 export const setLoading = (state, { loading }) => ({
 	...state,
 	loading
 });
 
+// set loading search
 export const setLoadingSearch = (state, { loadingSearch }) => ({
 	...state,
 	loadingSearch
 });
 
+// set data type: [anime, manga]
 export const setTypes = (state, { serie, data }) => {
 	return {
 		...state,
@@ -29,27 +33,30 @@ export const setTypes = (state, { serie, data }) => {
 	};
 };
 
+// search series by name
 export const setSearchData = (state, { searchData }) => ({
 	...state,
 	searchData
 });
 
+// add or remove serie to favorites
 export const handleFavorites = (state, { data }) => {
 	const { serieId } = data;
 	let favoritesAux = state.favorites;
 
+	// search existing serie
 	const favoriteIndex = favoritesAux.findIndex((item) => item.serieId === serieId);
 
+	// remove from favorites
 	if (favoriteIndex >= 0) {
 		console.log('remove ', serieId);
 		favoritesAux = favoritesAux.filter((item) => item.serieId !== serieId);
 	}
 	else {
+		// add to favorites
 		console.log('push ', serieId);
 		favoritesAux.push(data);
 	}
-
-	console.log('DATA', favoritesAux.map((item) => `${item.serieId}-${item.type}`));
 
 	return {
 		...state,
