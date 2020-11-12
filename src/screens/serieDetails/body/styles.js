@@ -7,16 +7,17 @@ import colors from 'constants/colors';
 export default StyleSheet.create({
 	container: {
 		flex: 1,
-		marginTop: hp(1)
+		marginTop: hp(1),
+		paddingHorizontal: wp(4)
 	},
 	textTitle: {
-		fontSize: wp(3.3),
+		fontSize: wp(3.6),
 		color: colors.textColor,
 		fontFamily: typography.fontFamilySemiBold,
 		marginBottom: hp(1)
 	},
 	textSubTitle: {
-		fontSize: wp(3.1),
+		fontSize: wp(3.5),
 		color: colors.textColor,
 		fontFamily: typography.fontFamilyRegular,
 		marginBottom: hp(1.5)
@@ -29,7 +30,7 @@ export default StyleSheet.create({
 		flex: 1
 	},
 	synopsisText: {
-		fontSize: wp(3.1),
+		fontSize: wp(3.5),
 		color: colors.textColor,
 		fontFamily: typography.fontFamilyRegular,
 		marginBottom: hp(1.5),
@@ -37,17 +38,17 @@ export default StyleSheet.create({
 	},
 	youtubeContainer: {
 		alignSelf: 'flex-end',
-		marginRight: wp(4),
+		marginRight: wp(2),
 		flexDirection: 'row',
 		alignItems: 'center'
 	},
 	youtubeIcon: {
 		fontSize: wp(10),
-		color: colors.textColor,
-		marginLeft: wp(2)
+		color: '#FF0000',
+		marginLeft: wp(3)
 	},
 	youtubeText: {
-		fontSize: wp(3.3),
+		fontSize: wp(3.6),
 		color: colors.textColor,
 		fontFamily: typography.fontFamilySemiBold,
 		marginTop: wp(0.1)

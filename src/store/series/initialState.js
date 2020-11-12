@@ -4,7 +4,9 @@ export const INITIAL_STATE = {
 		manga: []
 	},
 	loading: false,
+	loadingSearch: false,
 	searchData: {
 		data: []
-	}
+	},
+	favorites: []
 };

@@ -15,22 +15,33 @@ import SeriesActions from 'store/series/actions';
 import styles from './styles';
 
 const SerieDetailsScreen = (props) => {
+	// props
 	const { navigation, route: { params: { data } } } = props;
 	const dispatch = useDispatch();
-
-	const favoritesList = useSelector((state) => state.series.favorites);
-
+	// state
 	const [ genres, setGenres ] = useState([]);
 	const [ episodesList, setEpisodes ] = useState([]);
 	const [ loading, setLoading ] = useState(true);
 	const [ favorite, setFavorite ] = useState(false);
 	let dataType = null;
+	// reducers
+	const { connected } = useSelector((state) => state.appFlow);
+	const favoritesList = useSelector((state) => state.series.favorites);
 
 	useEffect(() => {
+		// serie type
 		dataType = getDataType();
-		getGenres();
-		getEpisodes();
 
+		// get genres and episodes if there is internet available
+		if (connected) {
+			getGenres();
+			getEpisodes();
+		}
+		else {
+			setLoading(false);
+		}
+
+		// check if is favorite
 		const isFavorite = checkFavorite();
 		if (isFavorite) {
 			setFavorite(true);
@@ -39,6 +50,7 @@ const SerieDetailsScreen = (props) => {
 
 	useEffect(
 		() => {
+			// toogle favorite
 			const isFavorite = checkFavorite();
 			if (isFavorite) {
 				setFavorite(true);
@@ -50,8 +62,9 @@ const SerieDetailsScreen = (props) => {
 		[ favoritesList ]
 	);
 
+	// check if exist in favorites list
 	const checkFavorite = () => {
-		const isFavorite = favoritesList.findIndex((item) => item.id === data.id && item.type === data.type);
+		const isFavorite = favoritesList.findIndex((item) => item.serieId == `${data.id}-${data.type}`);
 
 		return isFavorite >= 0 ? true : false;
 	};
@@ -70,6 +83,7 @@ const SerieDetailsScreen = (props) => {
 		}
 	};
 
+	// get serie genres
 	const getGenres = () => {
 		if (data.relationships.genres && data.relationships.genres.links.related) {
 			setLoading(true);
@@ -86,6 +100,7 @@ const SerieDetailsScreen = (props) => {
 		}
 	};
 
+	// get serie episodes
 	const getEpisodes = () => {
 		if (dataType && data.relationships && data.relationships[dataType].links.related) {
 			setLoading(true);
@@ -103,7 +118,15 @@ const SerieDetailsScreen = (props) => {
 	};
 
 	const onPressFavorite = () => {
-		dispatch(SeriesActions.handleFavorites(data.id, { ...data, genres }));
+		// dispatch serie info, adding genres, episodes and custom id
+		dispatch(
+			SeriesActions.handleFavorites({
+				...data,
+				genres,
+				serieId: `${data.id}-${data.type}`
+				// episodes: episodesList
+			})
+		);
 	};
 
 	return (

@@ -11,12 +11,13 @@ export default StyleSheet.create({
 	},
 	header: {
 		paddingHorizontal: wp(4),
-		marginTop: hp(4),
 		flexDirection: 'row',
-		alignItems: 'center'
+		alignItems: 'center',
+		height: hp(8),
+		backgroundColor: colors.primary
 	},
 	backIcon: {
-		color: colors.textColor,
+		color: colors.textColorSeconday,
 		fontSize: wp(10),
 		marginRight: wp(4)
 	},
@@ -31,6 +32,7 @@ export default StyleSheet.create({
 	options: {
 		flexDirection: 'row',
 		justifyContent: 'center',
+		// marginTop: wp(2.5),
 		marginVertical: hp(3)
 	},
 	optionContent: {

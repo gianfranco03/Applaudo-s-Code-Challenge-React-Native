@@ -6,16 +6,17 @@ import colors from 'constants/colors';
 
 export default StyleSheet.create({
 	container: {
-		marginTop: hp(2)
+		marginTop: hp(2),
+		paddingHorizontal: wp(4)
 	},
 	textTitle: {
-		fontSize: wp(3.4),
+		fontSize: wp(3.6),
 		color: colors.textColor,
 		fontFamily: typography.fontFamilySemiBold,
 		marginBottom: hp(2)
 	},
 	textSubTitle: {
-		fontSize: wp(3.2),
+		fontSize: wp(3.5),
 		color: colors.textColor,
 		fontFamily: typography.fontFamilyRegular,
 		marginBottom: hp(1.5)

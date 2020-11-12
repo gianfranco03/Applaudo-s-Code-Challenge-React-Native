@@ -9,6 +9,8 @@ const SerieDetailSkeleton = () => {
 	const synopsis = [ 0, 1, 2, 3 ];
 	const episodes = [ 0, 1, 2, 3, 4 ];
 
+	const items = [ 0, 1, 2 ];
+
 	const textComponent = (index) => (
 		<View key={index}>
 			<SkeletonPlaceholder.Item width={wp(30)} height={hp(3.2)} borderRadius={wp(0.5)} />
@@ -46,34 +48,37 @@ const SerieDetailSkeleton = () => {
 		/>
 	);
 
+	const renderItem = (index) => (
+		<SkeletonPlaceholder.Item key={index} marginRight={wp(2)}>
+			<SkeletonPlaceholder.Item width={wp(28)} height={hp(25)} borderRadius={wp(0.5)} />
+		</SkeletonPlaceholder.Item>
+	);
+
 	return (
-		<SkeletonPlaceholder>
-			<SkeletonPlaceholder.Item width={wp(100)} height={hp(8)} />
-			<SkeletonPlaceholder.Item paddingHorizontal={wp(4)}>
+		<View style={{ paddingHorizontal: wp(5), marginTop: hp(2) }}>
+			<SkeletonPlaceholder>
+				<SkeletonPlaceholder.Item
+					marginTop={hp(1)}
+					width={wp(15)}
+					height={hp(2)}
+					borderRadius={wp(0.5)}
+					marginBottom={hp(1)}
+				/>
 				<SkeletonPlaceholder.Item flexDirection="row">
-					<SkeletonPlaceholder.Item
-						marginTop={hp(3.5)}
-						width={wp(42)}
-						height={hp(34)}
-						borderRadius={wp(0.5)}
-					/>
-					<SkeletonPlaceholder.Item marginTop={hp(3.5)} marginLeft={wp(4)}>
-						{header.map((item, index) => textComponent(index))}
-					</SkeletonPlaceholder.Item>
+					{items.map((item, index) => renderItem(index))}
 				</SkeletonPlaceholder.Item>
-				<SkeletonPlaceholder.Item flexDirection="row" marginTop={hp(2)}>
-					<View style={{ flex: 1 }}>{body.map((item, index) => textComponent(index))}</View>
-					<View style={{ flex: 1 }}>{body.map((item, index) => textComponent(index))}</View>
+				<SkeletonPlaceholder.Item
+					marginTop={hp(4)}
+					width={wp(18)}
+					height={hp(2)}
+					borderRadius={wp(0.5)}
+					marginBottom={hp(1)}
+				/>
+				<SkeletonPlaceholder.Item flexDirection="row">
+					{items.map((item, index) => renderItem(index))}
 				</SkeletonPlaceholder.Item>
-				<SkeletonPlaceholder.Item marginTop={hp(2)}>
-					{synopsis.map((item, index) => synopsisComponent(index))}
-				</SkeletonPlaceholder.Item>
-				<SkeletonPlaceholder.Item width={wp(30)} height={hp(3.2)} borderRadius={wp(0.5)} marginTop={hp(2)} />
-				<SkeletonPlaceholder.Item marginTop={hp(2)}>
-					{episodes.map((item, index) => episodesComponent(index))}
-				</SkeletonPlaceholder.Item>
-			</SkeletonPlaceholder.Item>
-		</SkeletonPlaceholder>
+			</SkeletonPlaceholder>
+		</View>
 	);
 };
 

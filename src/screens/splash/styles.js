@@ -8,12 +8,17 @@ export default StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		backgroundColor: colors.backgroundPrimary
 	},
 	titleText: {
-		fontSize: wp(5),
+		fontSize: wp(7),
 		textAlign: 'center',
 		fontFamily: typography.fontFamilyBold
+	},
+	appImage: {
+		width: wp(40),
+		height: wp(40)
 	},
 	loading: {
 		marginTop: hp(5)

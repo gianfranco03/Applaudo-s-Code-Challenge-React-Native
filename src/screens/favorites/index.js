@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Image } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { Icon } from 'native-base';
 
@@ -38,7 +38,10 @@ const FavoritesScreen = (props) => {
 		}
 
 		return (
-			<View style={styles.itemContainer}>
+			<TouchableOpacity
+				style={styles.itemContainer}
+				onPress={() => navigation.navigate('SerieDetailsScreen', { data: item })}
+			>
 				<Image
 					source={{
 						uri: attributes.posterImage.medium || attributes.posterImage.original
@@ -49,7 +52,7 @@ const FavoritesScreen = (props) => {
 				<View style={styles.itemAbout}>
 					<Text style={styles.textTitle}>{attributes.canonicalTitle}</Text>
 					<Text style={styles.textTitle}>
-						Type <Text style={styles.textSubTitle}>{item.type} </Text>
+						Type <Text style={styles.textSubTitle}>{item.type}</Text>
 					</Text>
 					<Text style={styles.textTitle}>
 						{attributes.chapterCount ? 'Chapters' : 'Episodes'} <Text style={styles.textSubTitle} />
@@ -74,9 +77,10 @@ const FavoritesScreen = (props) => {
 					style={styles.removeIcon}
 					type="FontAwesome"
 					name="remove"
-					onPress={() => dispatch(SeriesActions.handleFavorites(item.id, { ...item }))}
+					onPress={() =>
+						dispatch(SeriesActions.handleFavorites({ ...item, serieId: `${item.id}-${item.type}` }))}
 				/>
-			</View>
+			</TouchableOpacity>
 		);
 	};
 
@@ -102,13 +106,15 @@ const FavoritesScreen = (props) => {
 					name="angle-left"
 					onPress={() => navigation.goBack()}
 				/>
-				<Text style={styles.title}>My Favorites</Text>
+				<Text style={styles.title}>{`M Y   F A V O R I T E S`}</Text>
 			</View>
 			<FlatList
 				data={data}
 				renderItem={renderItem}
 				keyExtractor={(item, index) => `${item.id}-${item.type}`}
 				ListEmptyComponent={() => renderEmpyComponent()}
+				style={styles.list}
+				contentContainerStyle={styles.containerStyle}
 				ItemSeparatorComponent={() => <View style={styles.separator} />}
 			/>
 		</View>
