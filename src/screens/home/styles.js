@@ -10,8 +10,20 @@ export default StyleSheet.create({
 		backgroundColor: colors.backgroundPrimary
 	},
 	header: {
+		height: hp(8),
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: colors.primary
+	},
+	titleText: {
+		fontFamily: typography.fontFamilyLight,
+		fontSize: wp(6),
+		color: colors.textColorSeconday
+	},
+	searchBarContainer: {
 		paddingHorizontal: wp(4),
-		marginTop: hp(4)
+		marginTop: hp(3)
+		// backgroundColor: 'red'
 	},
 	searchBar: {
 		height: hp(6)
@@ -28,11 +40,25 @@ export default StyleSheet.create({
 		right: 0,
 		zIndex: 999
 	},
+	divider: {
+		marginTop: hp(3),
+		height: 1,
+		width: wp(92),
+		alignSelf: 'center',
+		backgroundColor: colors.textColorTertiary
+	},
 	favoritesContainer: {
 		alignSelf: 'flex-end',
-		marginTop: hp(4),
+		marginTop: hp(2),
 		marginRight: wp(4),
-		marginBottom: hp(-2)
+		marginBottom: hp(-2),
+		flexDirection: 'row'
+	},
+	favoriteIcon: {
+		width: wp(6),
+		height: wp(6),
+		marginTop: hp(0.3),
+		marginRight: wp(2)
 	},
 	favoritesText: {
 		color: colors.textColor,

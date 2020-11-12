@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import AppNavigator from 'navigation/index';
 import showToast from 'utils/toast';

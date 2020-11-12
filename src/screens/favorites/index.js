@@ -74,7 +74,8 @@ const FavoritesScreen = (props) => {
 					style={styles.removeIcon}
 					type="FontAwesome"
 					name="remove"
-					onPress={() => dispatch(SeriesActions.handleFavorites(item.id, { ...item }))}
+					onPress={() =>
+						dispatch(SeriesActions.handleFavorites({ ...item, serieId: `${item.id}-${item.type}` }))}
 				/>
 			</View>
 		);
@@ -102,13 +103,14 @@ const FavoritesScreen = (props) => {
 					name="angle-left"
 					onPress={() => navigation.goBack()}
 				/>
-				<Text style={styles.title}>My Favorites</Text>
+				<Text style={styles.title}>{`M Y   F A V O R I T E S`}</Text>
 			</View>
 			<FlatList
 				data={data}
 				renderItem={renderItem}
 				keyExtractor={(item, index) => `${item.id}-${item.type}`}
 				ListEmptyComponent={() => renderEmpyComponent()}
+				contentContainerStyle={styles.containerStyle}
 				ItemSeparatorComponent={() => <View style={styles.separator} />}
 			/>
 		</View>

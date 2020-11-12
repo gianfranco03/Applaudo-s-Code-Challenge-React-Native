@@ -29,6 +29,29 @@ export const setSearchData = (state, { searchData }) => ({
 	searchData
 });
 
+export const handleFavorites = (state, { data }) => {
+	const { serieId } = data;
+	let favoritesAux = state.favorites;
+
+	const favoriteIndex = favoritesAux.findIndex((item) => item.serieId === serieId);
+
+	if (favoriteIndex >= 0) {
+		console.log('remove ', serieId);
+		favoritesAux = favoritesAux.filter((item) => item.serieId !== serieId);
+	}
+	else {
+		console.log('push ', serieId);
+		favoritesAux.push(data);
+	}
+
+	console.log('DATA', favoritesAux.map((item) => `${item.serieId}-${item.type}`));
+
+	return {
+		...state,
+		favorites: [ ...favoritesAux ]
+	};
+};
+
 export const series = createReducer(INITIAL_STATE, {
 	[SeriesTypes.SET_DATA]: setData,
 	[SeriesTypes.SET_TYPES]: setTypes,

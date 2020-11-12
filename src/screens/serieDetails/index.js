@@ -51,7 +51,7 @@ const SerieDetailsScreen = (props) => {
 	);
 
 	const checkFavorite = () => {
-		const isFavorite = favoritesList.findIndex((item) => item.id === data.id && item.type === data.type);
+		const isFavorite = favoritesList.findIndex((item) => item.serieId == `${data.id}-${data.type}`);
 
 		return isFavorite >= 0 ? true : false;
 	};
@@ -103,7 +103,7 @@ const SerieDetailsScreen = (props) => {
 	};
 
 	const onPressFavorite = () => {
-		dispatch(SeriesActions.handleFavorites(data.id, { ...data, genres }));
+		dispatch(SeriesActions.handleFavorites({ ...data, genres, serieId: `${data.id}-${data.type}` }));
 	};
 
 	return (

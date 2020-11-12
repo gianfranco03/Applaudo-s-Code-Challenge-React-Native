@@ -7,24 +7,27 @@ import colors from 'constants/colors';
 export default StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: colors.backgroundPrimary,
-		paddingHorizontal: wp(4)
-	},
-	title: {
-		fontFamily: typography.fontFamilyBold,
-		fontSize: wp(5),
-		color: colors.textColor,
-		marginLeft: wp(4)
+		backgroundColor: colors.backgroundPrimary
 	},
 	header: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		marginTop: hp(1.5),
-		marginBottom: hp(2)
+		height: hp(8),
+		backgroundColor: colors.primary,
+		paddingLeft: wp(4)
+	},
+	title: {
+		fontFamily: typography.fontFamilyLight,
+		fontSize: wp(6),
+		color: colors.textColorSeconday,
+		marginLeft: wp(4)
 	},
 	backIcon: {
-		color: colors.textColor,
+		color: colors.textColorSeconday,
 		fontSize: wp(10)
+	},
+	containerStyle: {
+		paddingHorizontal: wp(4)
 	},
 	separator: {
 		height: hp(2)
