@@ -33,23 +33,31 @@ const HomeScreen = (props) => {
 	useEffect(() => {
 		// get series
 		if (connected) {
-			// setLoading(true);
-			tesst();
+			getData();
 		}
 		else {
 			setLoading(false);
+			setData([
+				{ title: 'Anime', horizontal: true, data: anime.data },
+				{ title: 'Manga', horizontal: true, data: manga.data }
+			]);
 		}
 	}, []);
 
-	const tesst = () => {
+	// get anime and manga
+	const getData = () => {
+		// empty states and reducers
 		dispatch(SeriesActions.setData({ anime: [], manga: [] }));
+		setData([]);
+
 		getSeriesByType(SERIES_MAP.ANIME);
 		getSeriesByType(SERIES_MAP.MANGA);
 	};
 
+	// check new anime info
 	useEffect(
 		() => {
-			if (anime.data && anime.data.length > 0) {
+			if (connected && anime.data && anime.data.length > 0) {
 				const dataAux = [ ...data ];
 
 				const item = { title: 'Anime', horizontal: true, data: anime.data };
@@ -62,9 +70,11 @@ const HomeScreen = (props) => {
 		[ anime ]
 	);
 
+	// check new manga info
 	useEffect(
 		() => {
-			if (manga.data && manga.data.length > 0) {
+			if (connected && manga.data && manga.data.length > 0) {
+				console.log('adding manga');
 				const dataAux = [ ...data ];
 
 				const item = { title: 'Manga', horizontal: true, data: manga.data };
@@ -76,12 +86,15 @@ const HomeScreen = (props) => {
 		[ manga ]
 	);
 
+	// set loading state
 	useEffect(
 		() => {
-			setLoading(loadingState);
 			if (loadingState) {
+				console.log('data removed');
 				setData([]);
 			}
+
+			setLoading(loadingState);
 		},
 		[ loadingState ]
 	);

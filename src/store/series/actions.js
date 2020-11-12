@@ -4,7 +4,7 @@ const { Types, Creators } = createActions({
 	setData: [ 'data' ],
 	setTypes: [ 'serie', 'data' ],
 	setLoading: [ 'loading' ],
-	setLoadingSearch: [ 'loading' ],
+	setLoadingSearch: [ 'loadingSearch' ],
 	setSearchData: [ 'searchData' ],
 	handleFavorites: [ 'data' ]
 });

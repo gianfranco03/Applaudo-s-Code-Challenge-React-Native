@@ -129,7 +129,7 @@ const SearchScreen = (props) => {
 			</View>
 			{loading ? (
 				<View style={styles.loading}>
-					<ActivityIndicator size="large" color={colors.textColor} />
+					<ActivityIndicator size="large" color={colors.primary} />
 				</View>
 			) : null}
 			<FlatList

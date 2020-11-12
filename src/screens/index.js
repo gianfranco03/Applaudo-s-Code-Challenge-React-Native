@@ -18,7 +18,7 @@ const RootScreen = () => {
 			console.log('[RootScreen] Is connected?', state.isConnected);
 
 			if (!state.isConnected) {
-				showToast({ text: 'No internet connection.', type: 'error' });
+				showToast({ text: 'No internet connection', type: 'error' });
 			}
 			dispatch(AppFlowActions.setConnected(state.isConnected));
 		});

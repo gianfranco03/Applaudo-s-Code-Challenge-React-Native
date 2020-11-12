@@ -37,6 +37,9 @@ const SerieDetailsScreen = (props) => {
 			getGenres();
 			getEpisodes();
 		}
+		else {
+			setLoading(false);
+		}
 
 		// check if is favorite
 		const isFavorite = checkFavorite();

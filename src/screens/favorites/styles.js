@@ -26,6 +26,9 @@ export default StyleSheet.create({
 		color: colors.textColorSeconday,
 		fontSize: wp(10)
 	},
+	list: {
+		marginTop: hp(3)
+	},
 	containerStyle: {
 		paddingHorizontal: wp(4)
 	},
@@ -39,9 +42,8 @@ export default StyleSheet.create({
 		overflow: 'hidden'
 	},
 	itemImage: {
-		width: wp(25),
-		height: hp(20),
-		borderRadius: wp(0.5)
+		width: wp(27),
+		height: hp(20)
 	},
 	itemAbout: {
 		flex: 1,
@@ -49,13 +51,13 @@ export default StyleSheet.create({
 		justifyContent: 'center'
 	},
 	textTitle: {
-		fontSize: wp(3.4),
+		fontSize: wp(3.6),
 		color: colors.textColor,
 		fontFamily: typography.fontFamilySemiBold,
-		marginBottom: hp(0.5)
+		marginBottom: hp(1)
 	},
 	textSubTitle: {
-		fontSize: wp(3.2),
+		fontSize: wp(3.5),
 		color: colors.textColor,
 		fontFamily: typography.fontFamilyRegular,
 		marginBottom: hp(1)
@@ -85,7 +87,7 @@ export default StyleSheet.create({
 	},
 	removeIcon: {
 		color: colors.textColor,
-		fontSize: wp(8),
+		fontSize: wp(5),
 		position: 'absolute',
 		right: wp(2),
 		top: wp(1.5)

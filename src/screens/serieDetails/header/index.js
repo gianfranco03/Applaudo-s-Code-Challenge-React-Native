@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Image, Text, Share, TouchableOpacity } from 'react-native';
 import { Icon } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
+import ImageView from 'react-native-image-viewing';
 
 import showToast from 'utils/toast';
 
@@ -13,6 +14,9 @@ const Header = (props) => {
 	// props
 	const { data, onPressFavorite } = props;
 	const attributes = data.attributes;
+
+	// states
+	const [ visible, setIsVisible ] = useState(false);
 
 	// reducers and dispatchers
 	const navigation = useNavigation();
@@ -42,6 +46,12 @@ const Header = (props) => {
 
 	return (
 		<View>
+			<ImageView
+				images={[ { uri: attributes.posterImage.original || attributes.posterImage.medium } ]}
+				imageIndex={0}
+				visible={visible}
+				onRequestClose={() => setIsVisible(false)}
+			/>
 			<View style={styles.headerIcons}>
 				<Icon
 					style={styles.backIcon}
@@ -67,13 +77,15 @@ const Header = (props) => {
 				</View>
 			</View>
 			<View style={styles.container}>
-				<Image
-					source={{
-						uri: attributes.posterImage.medium || attributes.posterImage.original
-					}}
-					style={styles.image}
-					resizeMode="cover"
-				/>
+				<TouchableOpacity onPress={() => setIsVisible(true)}>
+					<Image
+						source={{
+							uri: attributes.posterImage.medium || attributes.posterImage.original
+						}}
+						style={styles.image}
+						resizeMode="cover"
+					/>
+				</TouchableOpacity>
 				<View style={styles.about}>
 					<Text style={styles.textTitle}>Canonical Title</Text>
 					<Text style={styles.textSubTitle}>{attributes.canonicalTitle}</Text>
