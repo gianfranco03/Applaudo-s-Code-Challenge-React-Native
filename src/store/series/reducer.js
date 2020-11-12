@@ -14,6 +14,11 @@ export const setLoading = (state, { loading }) => ({
 	loading
 });
 
+export const setLoadingSearch = (state, { loadingSearch }) => ({
+	...state,
+	loadingSearch
+});
+
 export const setTypes = (state, { serie, data }) => {
 	return {
 		...state,
@@ -56,5 +61,7 @@ export const series = createReducer(INITIAL_STATE, {
 	[SeriesTypes.SET_DATA]: setData,
 	[SeriesTypes.SET_TYPES]: setTypes,
 	[SeriesTypes.SET_LOADING]: setLoading,
-	[SeriesTypes.SET_SEARCH_DATA]: setSearchData
+	[SeriesTypes.SET_SEARCH_DATA]: setSearchData,
+	[SeriesTypes.HANDLE_FAVORITES]: handleFavorites,
+	[SeriesTypes.SET_LOADING_SEARCH]: setLoadingSearch
 });

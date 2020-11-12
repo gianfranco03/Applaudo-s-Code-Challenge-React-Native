@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import configureStore from './createStore';
 
 import { series } from './series/reducer';
+import { appFlow } from './appFlow/reducer';
 
 export default () => {
 	const rootReducer = combineReducers({
@@ -9,7 +10,8 @@ export default () => {
      * Register your reducers here.
      * @see https://redux.js.org/api-reference/combinereducers
      */
-		series: series
+		series: series,
+		appFlow: appFlow
 	});
 
 	return configureStore(rootReducer);

@@ -25,17 +25,17 @@ export const getSeriesByType = (type = 'anime') => {
 };
 
 export const searchSeries = (type = 'anime', slug) => {
-	store.dispatch(SeriesActions.setLoading(true));
+	store.dispatch(SeriesActions.setLoadingSearch(true));
 	// console.log('[ search ]', type, slug);
 
 	axios
 		.get(`${BASE_API}/${type}?filter[text]=${slug}`)
 		.then((response) => {
 			store.dispatch(SeriesActions.setSearchData(response.data));
-			store.dispatch(SeriesActions.setLoading(false));
+			store.dispatch(SeriesActions.setLoadingSearch(false));
 		})
 		.catch((error) => {
 			showToast({ text: error.toString(), type: 'error' });
-			store.dispatch(SeriesActions.setLoading(false));
+			store.dispatch(SeriesActions.setLoadingSearch(false));
 		});
 };
