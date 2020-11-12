@@ -6,7 +6,7 @@ const { Types, Creators } = createActions({
 	setLoading: [ 'loading' ],
 	setLoadingSearch: [ 'loading' ],
 	setSearchData: [ 'searchData' ],
-	handleFavorites: [ 'id', 'data' ]
+	handleFavorites: [ 'data' ]
 });
 
 export const SeriesTypes = Types;

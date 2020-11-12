@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text, Share } from 'react-native';
+import { View, Image, Text, Share, TouchableOpacity } from 'react-native';
 import { Icon } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 
@@ -10,11 +10,14 @@ import { EMPTY_RESPONSE } from 'constants/messages';
 import styles from './styles';
 
 const Header = (props) => {
+	// props
 	const { data, onPressFavorite } = props;
 	const attributes = data.attributes;
 
+	// reducers and dispatchers
 	const navigation = useNavigation();
 
+	// share serie name
 	const onShare = async () => {
 		try {
 			const result = await Share.share({
@@ -47,13 +50,20 @@ const Header = (props) => {
 					onPress={() => navigation.goBack()}
 				/>
 				<View style={styles.rightIcons}>
-					<Icon
-						style={styles.saveIcon}
-						type="FontAwesome"
-						name={data.favorite ? 'bookmark' : 'bookmark-o'}
-						onPress={() => onPressFavorite()}
-					/>
-					<Icon style={styles.shareIcon} type="FontAwesome" name="share-alt" onPress={() => onShare()} />
+					<TouchableOpacity onPress={() => onPressFavorite()}>
+						{data.favorite ? (
+							<Image source={require('assets/icons/heart-filled.png')} style={styles.heartImage} />
+						) : (
+							<Image source={require('assets/icons/heart-empty.png')} style={styles.heartImage} />
+						)}
+					</TouchableOpacity>
+					<TouchableOpacity onPress={() => onShare()}>
+						<Image
+							source={require('assets/icons/sharing.png')}
+							style={styles.shareImage}
+							onPress={() => onShare()}
+						/>
+					</TouchableOpacity>
 				</View>
 			</View>
 			<View style={styles.container}>

@@ -5,8 +5,10 @@ import { Icon } from 'native-base';
 import styles from './styles';
 
 const Episodes = (props) => {
+	// props
 	const { data, episodes } = props;
 
+	// render episode card
 	const renderItem = (item, index) => {
 		const attributes = item.attributes;
 

@@ -11,6 +11,6 @@ export default StyleSheet.create({
 		paddingBottom: hp(2)
 	},
 	scroll: {
-		paddingHorizontal: wp(4)
+		// paddingHorizontal: wp(4)
 	}
 });
